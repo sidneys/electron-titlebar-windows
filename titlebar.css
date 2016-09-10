@@ -105,7 +105,7 @@
 .titlebar-minimize:hover,
 .titlebar-maximize:hover,
 .titlebar-unmaximize:hover {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 
@@ -113,7 +113,7 @@
 .titlebar-invert .titlebar-minimize:hover,
 .titlebar-invert .titlebar-maximize:hover,
 .titlebar-invert .titlebar-unmaximize:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 

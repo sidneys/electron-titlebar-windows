@@ -4,12 +4,19 @@
     <meta charset="UTF-8">
     <title>electron-titlebar-windows</title>
     <style>
-        html, body {
-            margin: 0;
-            padding: 0;
+        html {
+            background: black;
+            /*background: white;*/
         }
         body {
-            background: darkslategray;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            -webkit-app-region: drag;
         }
     </style>
 </head>
@@ -28,7 +35,8 @@
     let t = titlebar(
         {
             invert: true,
-            color: 'rgba(100, 100, 100, 0.2)'
+            /*invert: false,*/
+            color: '#0061D1'
         }
         )
             .appendTo(document.body)
