@@ -1,6 +1,6 @@
 # electron-titlebar-windows [![Build Status](https://travis-ci.org/sidneys/electron-titlebar-windows.svg?branch=master)](https://travis-ci.org/sidneys/electron-titlebar-windows)
 
-**Creates a purely HTML5/JS-based, Windows 10-style ('Metro') titlebar for usage in Electron desktop apps.**
+**Adds the Windows 10 ModernUI (Metro)-style titlebars to any Electron-based desktop app.**
 
 
 
@@ -14,27 +14,33 @@ $ npm install --save electron-titlebar-windows
 
 # API
 
-### Require
+### Requiring the module
 
-The module exports a function:
+The module exports itself as a named function.
 
 ```js
 const createTitlebarWindows = require('electron-titlebar-windows');
+```
+
+
+
+### Configuration
+
+The module takes a single optional `options` argument and returns a `TitleBar`:
+
+```js
 const titlebarWindows = createTitlebarWindows(opts);
 ```
 
-The function takes one `options` argument and returns a `TitleBar`:
-
-
--    **options** *Object* (optional)
-     - *draggable* *String* (optional) - Dragging the title bar drags the window
-     - *inverted* *String* (optional) - Switch from dark on white to white on dark
-     - *style* *String* (optional) - CSS overrides for titlebar 
-
+- options `object`
+  - **invert** - `string` (optional) - **Dark or light titlebar buttons**
+  - **color** - `string` (optional) - **Titlebar  color, in CSS format (e.g. "#00FFAA")**
+  - **draggable** - `boolean` (optional) - **Title bar dragging on / off**
+  - **style** - `string` (optional) - **Titlebar CSS overrides** Adding the titlebar to the document
 
 
 
-### Adding the titlebar to the document
+### Integration
 
 ```js
 titlebarWindows.appendTo(document);
@@ -44,9 +50,9 @@ titlebarWindows.appendTo(document);
 
 ### Events
 
-The instance emits four events which can be handled: `close`, `minimize`, `fullscreen`, `maximize`
+The instance emits events which can be handled - `close`, `minimize`, `fullscreen`, `maximize`
 
-Register handlers for these events like so:
+Register handlers like so:
 
 ```js
 titlebarWindows.on('close', function(e) {

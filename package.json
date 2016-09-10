@@ -1,7 +1,7 @@
 {
   "name": "electron-titlebar-windows",
   "version": "1.0.0",
-  "description": "Add Windows 10 style titlebar menus to Electron apps",
+  "description": "Add Windows 10-style Modern UI titlebars to Electron-based desktop applications",
   "license": "MIT",
   "homepage": "https://sidneys.github.io/electron-titlebar-windows",
   "author": {
