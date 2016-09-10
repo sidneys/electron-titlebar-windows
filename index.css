@@ -1,5 +1,6 @@
 .titlebar {
     display: block;
+    position: relative;
     height: 30px;
     padding: 0;
 }
