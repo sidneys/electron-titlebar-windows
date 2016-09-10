@@ -1,0 +1,49 @@
+{
+  "name": "electron-titlebar-windows",
+  "version": "1.0.0",
+  "description": "Add Windows 10 style titlebar menus to Electron apps",
+  "license": "MIT",
+  "homepage": "https://sidneys.github.io/electron-titlebar-windows",
+  "author": {
+    "name": "sidneys",
+    "url": "https://github.com/sidneys"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sidneys/electron-titlebar-windows.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sidneys/electron-titlebar-windows/issues"
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "main": "./demo/main.js",
+  "scripts": {
+    "demo": "browserify --transform brfs titlebar.js --outfile ./demo/scripts.js --standalone titlebar; ./node_modules/.bin/electron ./demo/main.js",
+    "serve": "wzrd titlebar.js:demo/scripts.js -- -s electron-titlebar-windows"
+  },
+    "os": [
+    "darwin",
+    "win32",
+    "linux"
+  ],
+  "keywords": [
+    "windows",
+    "metro",
+    "titlebar",
+    "win32",
+    "css"
+  ],
+  "dependencies": {
+    "brfs": "^1.4.3",
+    "defaultcss": "^1.1.1",
+    "dombo": "^3.2.0",
+    "domify": "^1.4.0"
+  },
+  "devDependencies": {
+    "browserify": "^13.1.0",
+    "electron-prebuilt": "^1.3.5",
+    "wzrd": "^1.4.0"
+  }
+}

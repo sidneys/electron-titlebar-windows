@@ -1,0 +1,26 @@
+# BASELINE
+# macOS
+.DS_Store
+
+# Logs
+logs
+*.log
+
+# Temporary
+temp
+tmp
+
+# Cache
+.cache
+cache
+.sass-cache/
+
+# JetBrains
+.idea/
+*.sln.iml
+
+# Compiled
+build
+
+# Node
+node_modules

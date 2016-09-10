@@ -1,0 +1,147 @@
+.titlebar {
+    display: block;
+    height: 30px;
+    padding: 0;
+}
+
+
+
+.titlebar.maximized {
+    height: 22px;
+}
+
+
+
+.titlebar.webkit-draggable {
+    -webkit-app-region: drag;
+}
+
+
+
+.titlebar-controls {
+    float: right;
+    text-align: left;
+}
+
+
+
+.titlebar:after,
+.titlebar-controls:after {
+    content: ' ';
+    display: table;
+    clear: both;
+}
+
+
+
+.titlebar-minimize,
+.titlebar-maximize,
+.titlebar-close {
+    float: left;
+    width: 45px;
+    height: 29px;
+    margin: 0 0 1px 1px;
+    text-align: center;
+    line-height: 29px;
+
+    -webkit-transition: background-color .2s;
+    -moz-transition: background-color .2s;
+    -ms-transition: background-color .2s;
+    -o-transition: background-color .2s;
+    transition: background-color .2s;
+}
+
+
+
+.maximized .titlebar-minimize,
+.maximized .titlebar-maximize,
+.maximized .titlebar-close {
+    height: 21px;
+    line-height: 21px;
+}
+
+
+
+.titlebar.webkit-draggable .titlebar-minimize,
+.titlebar.webkit-draggable .titlebar-maximize,
+.titlebar.webkit-draggable .titlebar-close {
+    -webkit-app-region: no-drag;
+}
+
+
+
+.titlebar-minimize svg,
+.titlebar-maximize svg.maximize-svg,
+.titlebar-maximize svg.unmaximize-svg,
+.titlebar-close svg {
+    width: 10px;
+    height: 10px;
+}
+
+
+
+.titlebar-close svg polygon {
+    -webkit-transition: fill .2s;
+    -moz-transition: fill .2s;
+    -ms-transition: fill .2s;
+    -o-transition: fill .2s;
+    transition: fill .2s;
+}
+
+
+
+.titlebar:not(.maximized) .titlebar-maximize svg.unmaximize-svg {
+    display: none;
+}
+
+
+
+.titlebar.maximized .titlebar-maximize svg.maximize-svg {
+    display: none;
+}
+
+
+
+.titlebar-minimize:hover,
+.titlebar-maximize:hover,
+.titlebar-unmaximize:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+
+
+.titlebar-invert .titlebar-minimize:hover,
+.titlebar-invert .titlebar-maximize:hover,
+.titlebar-invert .titlebar-unmaximize:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+
+.titlebar-close:hover {
+    background-color: rgba(232, 17, 35, 0.9);
+}
+
+
+
+.titlebar-invert .titlebar-close:hover {
+    background-color: rgba(232, 17, 35, 0.9);
+}
+
+
+
+.titlebar-close:hover svg polygon {
+    fill: rgba(255, 255, 255, 1);
+}
+
+
+
+.titlebar-invert .titlebar-close:hover {
+    fill: rgba(0, 0, 0, 1);
+}
+
+
+
+.titlebar-invert svg polygon, .titlebar-invert svg rect, .titlebar-invert svg path {
+    fill: rgba(255, 255, 255, 1);
+}

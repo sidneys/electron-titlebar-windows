@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>electron-titlebar-windows</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: darkslategray;
+        }
+    </style>
+</head>
+<body>
+</body>
+
+<script type="text/javascript" src="./scripts.js"></script>
+
+<script>
+    let log = function(name) {
+        return function(e) {
+            console.log(name, e);
+        };
+    };
+
+    let t = titlebar(
+        {
+            invert: true,
+            color: 'rgba(100, 100, 100, 0.2)'
+        }
+        )
+            .appendTo(document.body)
+            .on('close', log('close'))
+            .on('minimize', log('minimize'))
+            .on('fullscreen', log('fullscreen'))
+            .on('maximize', log('maximize'));
+</script>
+</html>
