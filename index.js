@@ -8,8 +8,8 @@ var $ = require('dombo');
 var ALT = 18;
 var $window = $(window);
 
-var style = fs.readFileSync(__dirname + '/titlebar.css', 'utf-8');
-var html = fs.readFileSync(__dirname + '/titlebar.html', 'utf-8');
+var style = fs.readFileSync(__dirname + '/index.css', 'utf-8');
+var html = fs.readFileSync(__dirname + '/index.html', 'utf-8');
 
 
 var TitleBar = function(options) {
@@ -97,4 +97,7 @@ TitleBar.prototype.destroy = function() {
     return this;
 };
 
+/*
+ * @exports
+ */
 module.exports = TitleBar;

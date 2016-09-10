@@ -1,6 +1,6 @@
 {
   "name": "electron-titlebar-windows",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Add Windows 10-style Modern UI titlebars to Electron-based desktop applications",
   "license": "MIT",
   "homepage": "https://sidneys.github.io/electron-titlebar-windows",
@@ -18,7 +18,6 @@
   "engines": {
     "node": ">=6.0.0"
   },
-  "main": "./demo/main.js",
   "scripts": {
     "demo": "browserify --transform brfs titlebar.js --outfile ./demo/scripts.js --standalone titlebar; ./node_modules/.bin/electron ./demo/main.js",
     "serve": "wzrd titlebar.js:demo/scripts.js -- -s electron-titlebar-windows"
