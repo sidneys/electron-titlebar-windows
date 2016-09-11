@@ -111,9 +111,9 @@
 
 
 
-.titlebar-invert .titlebar-minimize:hover,
-.titlebar-invert .titlebar-maximize:hover,
-.titlebar-invert .titlebar-unmaximize:hover {
+.titlebar-light .titlebar-minimize:hover,
+.titlebar-light .titlebar-maximize:hover,
+.titlebar-light .titlebar-unmaximize:hover {
     background-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -125,7 +125,7 @@
 
 
 
-.titlebar-invert .titlebar-close:hover {
+.titlebar-light .titlebar-close:hover {
     background-color: rgba(232, 17, 35, 0.9);
 }
 
@@ -137,12 +137,12 @@
 
 
 
-.titlebar-invert .titlebar-close:hover {
+.titlebar-light .titlebar-close:hover {
     fill: rgba(0, 0, 0, 1);
 }
 
 
 
-.titlebar-invert svg polygon, .titlebar-invert svg rect, .titlebar-invert svg path {
+.titlebar-light svg polygon, .titlebar-light svg rect, .titlebar-light svg path {
     fill: rgba(255, 255, 255, 1);
 }

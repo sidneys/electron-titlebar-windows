@@ -20,46 +20,43 @@ $ npm install --save electron-titlebar-windows
 
 ### Requiring the module
 
-The module exports itself as a named function.
-
 ```js
-const createTitlebarWindows = require('electron-titlebar-windows');
+const titlebarWindows = require('electron-titlebar-windows');
 ```
 
 
 
 ### Configuration
 
-The module takes a single optional `options` argument and returns a `TitleBar`:
+The module takes a single optional `options` argument and exports the `TitleBar` class:
 
 ```js
-const titlebarWindows = createTitlebarWindows(opts);
+const titlebar = new titlebarWindows(opts);
 ```
 
 - options `object`
-  - **invert** - `string` (optional) - **Dark or light titlebar buttons**
-  - **color** - `string` (optional) - **Titlebar  color, in CSS format (e.g. "#00FFAA")**
-  - **draggable** - `boolean` (optional) - **Title bar dragging on / off**
-  - **style** - `string` (optional) - **Titlebar CSS overrides** Adding the titlebar to the document
+  - **darkMode** - `string` (optional) - **Light titlebar buttons (for dark backgrounds)**
+  - **backgroundColor** - `string` (optional) - **Titlebar color in CSS color syntax**
+  - **draggable** - `boolean` (optional) - **Titlebar enables dragging of contained window**
 
 
 
 ### Integration
 
 ```js
-titlebarWindows.appendTo(document);
+titlebar.appendTo(document);
 ```
 
 
 
 ### Events
 
-The instance emits events which can be handled - `close`, `minimize`, `fullscreen`, `maximize`
+`TitleBar` extends `EventEmitter` and emits the following events: `close`, `minimize`, `fullscreen`, `maximize`
 
 Register handlers like so:
 
 ```js
-titlebarWindows.on('close', function(e) {
+titlebar.on('close', function(e) {
     console.log('close');
 });
 ```
@@ -69,13 +66,15 @@ titlebarWindows.on('close', function(e) {
 ### Convenience
 
 Use the ```element``` property for reference:
+
 ```js
-titlebarWindows.element.appendChild(document.createElement('div'));
+titlebar.element.appendChild(document.createElement('div'));
 ```
 
 Clean up after usage:
+
 ```js
-titlebarWindows.destroy();
+titlebar.destroy();
 ```
 
 
