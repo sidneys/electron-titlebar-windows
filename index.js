@@ -48,10 +48,10 @@ class TitleBar extends EventEmitter {
 
     /**
      * Create the Title bar
-     * @param {object} options - Titlebar Configuration
-     * @param {boolean=} options.darkMode - Light titlebar buttons (for dark backgrounds)
-     * @param {string=} options.backgroundColor - Titlebar color in CSS color syntax
-     * @param {boolean} options.draggable - Titlebar enables dragging of contained window
+     * @param {Object} options - Titlebar Configuration
+     * @param {Boolean=} options.darkMode - Light titlebar buttons (for dark backgrounds)
+     * @param {String=} options.backgroundColor - Titlebar color in CSS color syntax
+     * @param {Boolean=} options.draggable - Titlebar enables dragging of contained window
      */
     constructor(options) {
 

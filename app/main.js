@@ -10,7 +10,7 @@ function createWindow() {
         frame: false
     });
 
-    mainWindow.loadURL('file://' + __dirname + '/index.html');
+    mainWindow.loadURL('file://' + __dirname + '/main.html');
 
     if (process.env['DEBUG']) {
         mainWindow.webContents.openDevTools();
