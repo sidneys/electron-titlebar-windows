@@ -1,6 +1,6 @@
 # electron-titlebar-windows [![Build Status](https://travis-ci.org/sidneys/electron-titlebar-windows.svg?branch=master)](https://travis-ci.org/sidneys/electron-titlebar-windows)
 
-**Adds the Windows 10 ModernUI (Metro)-style titlebars to any Electron-based desktop app.**
+**Adds the Windows 10 ModernUI (Metro)-style title bars to any Electron-based desktop app.**
 
 
 
@@ -21,7 +21,7 @@ $ npm install --save electron-titlebar-windows
 ### Requiring the module
 
 ```js
-const titlebarWindows = require('electron-titlebar-windows');
+const TitlebarWindows = require('electron-titlebar-windows');
 ```
 
 
@@ -31,7 +31,7 @@ const titlebarWindows = require('electron-titlebar-windows');
 The module takes a single optional `options` argument and exports the `TitleBar` class:
 
 ```js
-const titlebar = new titlebarWindows(opts);
+const titlebar = new TitlebarWindows(opts);
 ```
 
 - options `object`
@@ -44,16 +44,14 @@ const titlebar = new titlebarWindows(opts);
 ### Integration
 
 ```js
-titlebar.appendTo(document);
+titlebar.appendTo(document.body);
 ```
 
 
 
 ### Events
 
-`TitleBar` extends `EventEmitter` and emits the following events: `close`, `minimize`, `fullscreen`, `maximize`
-
-Register handlers like so:
+`TitleBar` extends `EventEmitter` and emits the following events: `minimize`, `resize`, `maximize`, `fullscreen`, `close`
 
 ```js
 titlebar.on('close', function(e) {

@@ -1,19 +1,11 @@
 .titlebar {
     display: block;
     position: relative;
-    height: 30px;
+    height: 32px;
     padding: 0;
 }
 
-
-
-.titlebar.maximized {
-    height: 22px;
-}
-
-
-
-.titlebar.webkit-draggable {
+.titlebar.draggable {
     -webkit-app-region: drag;
 }
 
@@ -36,12 +28,12 @@
 
 
 .titlebar-minimize,
-.titlebar-maximize,
+.titlebar-resize,
 .titlebar-close {
     float: left;
     width: 45px;
-    height: 29px;
-    margin: 0 0 1px 1px;
+    height: 31px;
+    margin: 1px 1px 0 0;
     text-align: center;
     line-height: 29px;
 
@@ -52,31 +44,21 @@
     transition: background-color .2s;
 }
 
-
-
-.maximized .titlebar-minimize,
-.maximized .titlebar-maximize,
-.maximized .titlebar-close {
-    height: 21px;
-    line-height: 21px;
-}
-
-
-
-.titlebar.webkit-draggable .titlebar-minimize,
-.titlebar.webkit-draggable .titlebar-maximize,
-.titlebar.webkit-draggable .titlebar-close {
+.titlebar.draggable .titlebar-minimize,
+.titlebar.draggable .titlebar-resize,
+.titlebar.draggable .titlebar-close {
     -webkit-app-region: no-drag;
 }
 
 
 
 .titlebar-minimize svg,
-.titlebar-maximize svg.maximize-svg,
-.titlebar-maximize svg.unmaximize-svg,
+.titlebar-resize svg.maximize-svg,
+.titlebar-resize svg.fullscreen-svg,
 .titlebar-close svg {
     width: 10px;
     height: 10px;
+    shape-rendering: crispEdges;
 }
 
 
@@ -90,30 +72,27 @@
 }
 
 
-
-.titlebar:not(.maximized) .titlebar-maximize svg.unmaximize-svg {
+.titlebar:not(.fullscreen) svg.maximize-svg {
     display: none;
 }
 
-
-
-.titlebar.maximized .titlebar-maximize svg.maximize-svg {
+.titlebar.fullscreen svg.fullscreen-svg {
     display: none;
 }
 
 
 
 .titlebar-minimize:hover,
-.titlebar-maximize:hover,
-.titlebar-unmaximize:hover {
+.titlebar-resize:hover,
+.titlebar-fullscreen:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
 
 
 .titlebar-light .titlebar-minimize:hover,
-.titlebar-light .titlebar-maximize:hover,
-.titlebar-light .titlebar-unmaximize:hover {
+.titlebar-light .titlebar-resize:hover,
+.titlebar-light .titlebar-fullscreen:hover {
     background-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -122,14 +101,6 @@
 .titlebar-close:hover {
     background-color: rgba(232, 17, 35, 0.9);
 }
-
-
-
-.titlebar-light .titlebar-close:hover {
-    background-color: rgba(232, 17, 35, 0.9);
-}
-
-
 
 .titlebar-close:hover svg polygon {
     fill: rgba(255, 255, 255, 1);
@@ -141,8 +112,12 @@
     fill: rgba(0, 0, 0, 1);
 }
 
-
-
-.titlebar-light svg polygon, .titlebar-light svg rect, .titlebar-light svg path {
+.titlebar-light svg polygon,
+.titlebar-light svg rect,
+.titlebar-light svg > path {
     fill: rgba(255, 255, 255, 1);
+}
+
+.titlebar-light .titlebar-close:hover {
+    background-color: rgba(232, 17, 35, 0.9);
 }

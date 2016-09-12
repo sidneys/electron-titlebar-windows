@@ -5,7 +5,7 @@
  * Modules: Node
  * @global
  */
-const EventEmitter = require('events').EventEmitter,
+const EventEmitter = require('events'),
     path = require('path'),
     fs = require('fs'),
     util = require('util');
@@ -40,11 +40,11 @@ const titlebarView = fs.readFileSync(__dirname + '/titlebar.html', 'utf-8');
 
 
 /**
- * TitleBar
- * @class
+ * Title Bar
+ * @class TitleBar
+ * @extends EventEmitter
  */
 class TitleBar extends EventEmitter {
-
 
     /**
      * Create the Title bar
@@ -54,67 +54,77 @@ class TitleBar extends EventEmitter {
      * @param {Boolean=} options.draggable - Titlebar enables dragging of contained window
      */
     constructor(options) {
-
         super();
 
-        this._options = options || {};
-
-        let element = domify(titlebarView, document),
+        let self = this,
+            element = domify(titlebarView, document),
             $element = $(element);
 
-        this.element = element;
+        let isFullscreen = element.classList.contains('fullscreen');
+
+        self._options = options || {};
+        self.element = element;
 
         // Option: draggable
-        if (this._options.draggable !== false) {
-            $element.addClass('webkit-draggable');
+        if (this._options.draggable) {
+            $element.addClass('draggable');
         }
 
-        let self = this;
+        let minimizeButton = $('.titlebar-minimize', element)[0],
+            resizeButton = $('.titlebar-resize', element)[0],
+            closeButton = $('.titlebar-close', element)[0];
 
-        let closeButton = $('.titlebar-close', element)[0],
-            maximizeButton = $('.titlebar-maximize', element)[0],
-            minimizeButton = $('.titlebar-minimize', element)[0],
-            fullscreenButton = $('.titlebar-fullscreen', element)[0];
+        /**
+         * @fires TitleBar#EventEmitter:minimize
+         */
+        let onMinimize = function(ev) {
+            self.emit('minimize', ev);
+        };
+
+        /**
+         * @fires TitleBar#EventEmitter:resize
+         * @fires TitleBar#EventEmitter:maximize
+         * @fires TitleBar#EventEmitter:fullscreen
+         */
+        let onResize = function(ev) {
+            self.emit('resize', ev);
+
+            if (isFullscreen) {
+                self.emit('maximize', ev);
+                $element.removeClass('fullscreen');
+                isFullscreen = false;
+            } else {
+                self.emit('fullscreen', ev);
+                $element.addClass('fullscreen');
+                isFullscreen = true;
+            }
+        };
+
+        /**
+         * @fires TitleBar#EventEmitter:close
+         */
+        let onClose = function(ev) {
+            self.emit('close', ev);
+        };
 
         $element.on('click', function(ev) {
-
-            let target = ev.target;
-
-            if (closeButton && closeButton.contains(target)) {
-                return self.emit('close', ev);
+            if (minimizeButton.contains(ev.target)) {
+                onMinimize(ev);
             }
-
-            if (minimizeButton && minimizeButton.contains(target)) {
-                return self.emit('minimize', ev);
+            if (resizeButton.contains(ev.target)) {
+                onResize(ev);
             }
-
-            if (maximizeButton && maximizeButton.contains(target)) {
-                return self.emit('maximize', ev);
-            }
-
-            if (fullscreenButton && fullscreenButton.contains(target)) {
-                if (ev.altKey) {
-                    self.emit('maximize', ev);
-                } else {
-                    self.emit('fullscreen', ev);
-                }
+            if (closeButton.contains(ev.target)) {
+                onClose(ev);
             }
         });
 
         $element.on('dblclick', function(ev) {
-            let target = ev.target;
-
-            if (closeButton && closeButton.contains(target) ||
-                minimizeButton && minimizeButton.contains(target) ||
-                maximizeButton && maximizeButton.contains(target) ||
-                fullscreenButton && fullscreenButton.contains(target)) {
-                return;
+            if (!(minimizeButton.contains(ev.target) || resizeButton.contains(ev.target) || closeButton.contains(ev.target))) {
+                onResize(ev);
             }
-
-            self.emit('maximize', ev);
         });
     }
-
 
     /**
      * Add to DOM
@@ -125,8 +135,6 @@ class TitleBar extends EventEmitter {
         if (typeof element === 'string') {
             element = $(element)[0];
         }
-
-        let $element = $(this.element);
 
         // Option: darkMode
         if (this._options.darkMode !== false) {
@@ -139,24 +147,10 @@ class TitleBar extends EventEmitter {
         }
 
         defaultCss('titlebar', titlebarStylesheet);
-
-        $window.on('keydown', this._onkeydown = function(ev) {
-            if (ev.keyCode === 18) {
-                $element.addClass('alt')
-            }
-        });
-
-        $window.on('keyup', this._onkeyup = function(ev) {
-            if (ev.keyCode === 18) {
-                $element.removeClass('alt');
-            }
-        });
-
         element.appendChild(this.element);
 
         return this;
     };
-
 
     /**
      * Remove from DOM
@@ -168,9 +162,6 @@ class TitleBar extends EventEmitter {
         if (parent) {
             parent.removeChild(this.element);
         }
-
-        $window.off('keydown', this._onkeydown);
-        $window.off('keyup', this._onkeyup);
 
         return this;
     };

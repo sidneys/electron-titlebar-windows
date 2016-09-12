@@ -1,28 +1,22 @@
 'use strict';
 
-
 let log = function(name) {
     return function(e) {
         console.log(name, e);
     };
 };
 
-
-/** Require */
-const titlebarWindows = require('..');
-
+const TitlebarWindows = require('..');
 
 /** Options */
-let titlebar = new titlebarWindows({
+let titlebar = new TitlebarWindows({
     darkMode: true,
     backgroundColor: '#0061D1',
     draggable: true
 });
 
-
 /** DOM */
 titlebar.appendTo(document.body);
-
 
 /** Events */
 titlebar.on('close', log('close'));
