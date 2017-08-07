@@ -1,3 +1,4 @@
+# http://editorconfig.org
 root = true
 
 [*]
@@ -8,8 +9,14 @@ charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
 
-[package.json]
-indent_size = 2
-
 [*.md]
 trim_trailing_whitespace = false
+
+[*.yml]
+indent_size = 2
+
+[.eslintrc]
+indent_size = 2
+
+[package.json]
+indent_size = 2

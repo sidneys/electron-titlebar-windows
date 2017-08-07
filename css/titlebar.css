@@ -1,35 +1,34 @@
-.titlebar {
+.titlebar
+{
     display: block;
     position: relative;
     height: 32px;
     padding: 0;
 }
 
-.titlebar.draggable {
+.titlebar.draggable
+{
     -webkit-app-region: drag;
 }
 
-
-
-.titlebar-controls {
+.titlebar-controls
+{
     float: right;
     text-align: left;
 }
 
-
-
 .titlebar:after,
-.titlebar-controls:after {
+.titlebar-controls:after
+{
     content: ' ';
     display: table;
     clear: both;
 }
 
-
-
 .titlebar-minimize,
 .titlebar-resize,
-.titlebar-close {
+.titlebar-close
+{
     float: left;
     width: 45px;
     height: 31px;
@@ -46,24 +45,23 @@
 
 .titlebar.draggable .titlebar-minimize,
 .titlebar.draggable .titlebar-resize,
-.titlebar.draggable .titlebar-close {
+.titlebar.draggable .titlebar-close
+{
     -webkit-app-region: no-drag;
 }
-
-
 
 .titlebar-minimize svg,
 .titlebar-resize svg.maximize-svg,
 .titlebar-resize svg.fullscreen-svg,
-.titlebar-close svg {
+.titlebar-close svg
+{
     width: 10px;
     height: 10px;
     shape-rendering: crispEdges;
 }
 
-
-
-.titlebar-close svg polygon {
+.titlebar-close svg polygon
+{
     -webkit-transition: fill .2s;
     -moz-transition: fill .2s;
     -ms-transition: fill .2s;
@@ -71,53 +69,53 @@
     transition: fill .2s;
 }
 
-
-.titlebar:not(.fullscreen) svg.maximize-svg {
+.titlebar:not(.fullscreen) svg.maximize-svg
+{
     display: none;
 }
 
-.titlebar.fullscreen svg.fullscreen-svg {
+.titlebar.fullscreen svg.fullscreen-svg
+{
     display: none;
 }
-
-
 
 .titlebar-minimize:hover,
 .titlebar-resize:hover,
-.titlebar-fullscreen:hover {
+.titlebar-fullscreen:hover
+{
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-
-
 .titlebar-light .titlebar-minimize:hover,
 .titlebar-light .titlebar-resize:hover,
-.titlebar-light .titlebar-fullscreen:hover {
+.titlebar-light .titlebar-fullscreen:hover
+{
     background-color: rgba(0, 0, 0, 0.1);
 }
 
-
-
-.titlebar-close:hover {
+.titlebar-close:hover
+{
     background-color: rgba(232, 17, 35, 0.9);
 }
 
-.titlebar-close:hover svg polygon {
+.titlebar-close:hover svg polygon
+{
     fill: rgba(255, 255, 255, 1);
 }
 
-
-
-.titlebar-light .titlebar-close:hover {
+.titlebar-light .titlebar-close:hover
+{
     fill: rgba(0, 0, 0, 1);
 }
 
 .titlebar-light svg polygon,
 .titlebar-light svg rect,
-.titlebar-light svg > path {
+.titlebar-light svg > path
+{
     fill: rgba(255, 255, 255, 1);
 }
 
-.titlebar-light .titlebar-close:hover {
+.titlebar-light .titlebar-close:hover
+{
     background-color: rgba(232, 17, 35, 0.9);
 }

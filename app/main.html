@@ -2,9 +2,55 @@
 <html>
 <head>
     <title></title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
-<body>
-    <script src="renderer.js"></script>
+<body style="background: rgb(50, 50, 50); margin: 0; padding: 0;">
+<script>
+    const electronTitlebarWindows = require('..');
+    const { remote } = require('electron');
+
+    /** Options */
+    let titlebar = new electronTitlebarWindows({
+        darkMode: true,
+        color: 'rgb(220, 200, 200)',
+        backgroundColor: 'rgb(200, 80, 150)',
+        draggable: true,
+        fullscreen: false
+    });
+
+    /**
+     * DOM
+     */
+    titlebar.appendTo();
+
+
+    /** Event#close */
+    titlebar.on('close', () => {
+        console.info('close');
+
+        remote.getCurrentWindow().close();
+    });
+
+    /** Event#fullscreen */
+    titlebar.on('fullscreen', () => {
+        console.info('fullscreen');
+
+        remote.getCurrentWindow().setFullScreen(true);
+    });
+
+    /** Event#minimize */
+    titlebar.on('minimize', () => {
+        console.info('minimize');
+
+        remote.getCurrentWindow().minimize();
+    });
+
+    /** Event#maximize */
+    titlebar.on('maximize', () => {
+        console.info('maximize');
+
+        remote.getCurrentWindow().setFullScreen(false);
+        remote.getCurrentWindow().maximize();
+    });
+</script>
 </body>
 </html>

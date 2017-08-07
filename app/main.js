@@ -1,37 +1,25 @@
-const electron = require('electron');
-const { app, BrowserWindow } = electron;
+'use strict';
 
-let mainWindow;
 
-function createWindow() {
-    mainWindow = new BrowserWindow({
-        width: 800,
-        alwaysOnTop: true,
-        height: 480,
-        frame: false
+const { app, BrowserWindow } = require('electron');
+
+
+app.on('ready', () => {
+    const win = new BrowserWindow({
+        frame: false,
+        width: 600,
+        height: 300
     });
 
-    mainWindow.loadURL('file://' + __dirname + '/main.html');
+    win.on('ready-to-show', () => {
+        win.focus();
+        win.show();
+        win.webContents.openDevTools({ mode: 'undocked' });
+    });
 
-    if (process.env['DEBUG']) {
-        mainWindow.webContents.openDevTools();
-    }
-
-    mainWindow.on('closed', function() {
-        mainWindow = null
-    })
-}
-
-app.on('ready', createWindow);
-
-app.on('window-all-closed', function() {
-    if (process.platform !== 'darwin') {
-        app.quit()
-    }
+    win.loadURL(`file://${__dirname}/main.html`);
 });
 
-app.on('activate', function() {
-    if (mainWindow === null) {
-        createWindow()
-    }
+app.on('activate', () => {
+    BrowserWindow.getAllWindows().map(win => win.show());
 });

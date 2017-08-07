@@ -1,6 +1,6 @@
 # electron-titlebar-windows [![Build Status](https://travis-ci.org/sidneys/electron-titlebar-windows.svg?branch=master)](https://travis-ci.org/sidneys/electron-titlebar-windows)
 
-**Adds the Windows 10 ModernUI (Metro)-style title bars to any Electron-based desktop app.**
+**Adds CSS-based Windows 10 Modern UI title bars to any Electron-based desktop app.**
 
 
 
@@ -15,64 +15,64 @@ $ npm install --save electron-titlebar-windows
 ```
 
 
-
 # API
 
-### Requiring the module
+### Importing the module
 
 ```js
-const TitlebarWindows = require('electron-titlebar-windows');
+const ElectronTitlebarWindows = require('electron-titlebar-windows');
 ```
 
-
-
-### Configuration
+### Creating a new instance
 
 The module takes a single optional `options` argument and exports the `TitleBar` class:
 
 ```js
-const titlebar = new TitlebarWindows(opts);
+const titlebar = new ElectronTitlebarWindows(options);
 ```
 
-- options `object`
-  - **darkMode** - `string` (optional) - **Light titlebar buttons (for dark backgrounds)**
-  - **backgroundColor** - `string` (optional) - **Titlebar color in CSS color syntax**
-  - **draggable** - `boolean` (optional) - **Titlebar enables dragging of contained window**
+Properties of `options`:
+ - (optional) **darkMode** - `String` - **Light titlebar buttons (for dark backgrounds)**
+ - (optional) **color** - `String` - **Icon color (Hex)**
+ - (optional) **backgroundColor** - `String` - **Bar color (Hex)**
+ - (optional) **draggable** - `Boolean` - **Titlebar enables dragging of contained window**
+ - (optional) **fullscreen** - `Boolean` - **Resize button initializes in fullscreen mode**
 
+### Methods
 
+#### #appendTo
 
-### Integration
+Shows the Title Bar.
 
 ```js
-titlebar.appendTo(document.body);
+titlebar.appendTo(contextElement);
 ```
 
+ - (optional) **contextElement** - `HTMLElement` - Default: `document.body` - **Element to which to add the titlebar**  
+
+
+#### #destroy
+
+Removes the Title Bar.
+
+```js
+titlebar.destroy();
+```
 
 
 ### Events
 
-`TitleBar` extends `EventEmitter` and emits the following events: `minimize`, `resize`, `maximize`, `fullscreen`, `close`
+`TitleBar` emits the following events:
+
+- `minimize`
+- `maximize`
+- `fullscreen`
+- `close`
 
 ```js
 titlebar.on('close', function(e) {
     console.log('close');
 });
-```
-
-
-
-### Convenience
-
-Use the ```element``` property for reference:
-
-```js
-titlebar.element.appendChild(document.createElement('div'));
-```
-
-Clean up after usage:
-
-```js
-titlebar.destroy();
 ```
 
 
