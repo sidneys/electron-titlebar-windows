@@ -1,4 +1,4 @@
-# electron-titlebar-windows [![Build Status](https://travis-ci.org/sidneys/electron-titlebar-windows.svg?branch=master)](https://travis-ci.org/sidneys/electron-titlebar-windows)
+# electron-titlebar-windows
 
 **Adds CSS-based Windows 10 Modern UI title bars to any Electron-based desktop app.**
 
