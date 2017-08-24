@@ -37,6 +37,7 @@ Properties of `options`:
  - (optional) **backgroundColor** - `String` - **Bar color (Hex)**
  - (optional) **draggable** - `Boolean` - **Titlebar enables dragging of contained window**
  - (optional) **fullscreen** - `Boolean` - **Resize button initializes in fullscreen mode**
+ - (optional) **exclude** - `Array` - **Array of icons to exclude by class name. Accepts ['minimize', 'resize', 'close']**
 
 ### Methods
 
