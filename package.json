@@ -36,17 +36,17 @@
     "windows"
   ],
   "dependencies": {
-    "chai": "^4.1.1",
-    "chai-as-promised": "^7.1.1",
     "defaultcss": "^1.1.1",
-    "domify": "^1.4.0",
-    "eslint": "^4.4.0",
-    "mocha": "^3.5.0",
-    "mocha-better-spec-reporter": "^3.1.0"
+    "domify": "^1.4.0"
   },
   "devDependencies": {
     "electron": "^1.6.11",
-    "spectron": "^3.7.2"
+    "spectron": "^3.7.2",
+    "chai": "^4.1.1",
+    "chai-as-promised": "^7.1.1",
+    "eslint": "^4.4.0",
+    "mocha": "^3.5.0",
+    "mocha-better-spec-reporter": "^3.1.0"
   },
   "main": "./lib/titlebar.js",
   "scripts": {
