@@ -32,7 +32,7 @@ const titlebar = new ElectronTitlebarWindows(options);
 ```
 
 Properties of `options`:
- - (optional) **darkMode** - `String` - **Light titlebar buttons (for dark backgrounds)**
+ - (optional) **darkMode** - `Boolean` - **Light titlebar buttons (for dark backgrounds)**
  - (optional) **color** - `String` - **Icon color (Hex)**
  - (optional) **backgroundColor** - `String` - **Bar color (Hex)**
  - (optional) **draggable** - `Boolean` - **Titlebar enables dragging of contained window**
